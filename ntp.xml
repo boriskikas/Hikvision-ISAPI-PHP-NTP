@@ -1,0 +1,9 @@
+<NTPServerList xmlns="http://www.hikvision.com/ver20/XMLSchema" version="1.0">
+<NTPServer xmlns="http://www.hikvision.com/ver20/XMLSchema" version="1.0">
+<id>1</id>
+<addressingFormatType>hostname</addressingFormatType>
+<hostName>zg1.ntp.carnet.hr</hostName>
+<portNo>123</portNo>
+<synchronizeInterval>1440</synchronizeInterval>
+</NTPServer>
+</NTPServerList>

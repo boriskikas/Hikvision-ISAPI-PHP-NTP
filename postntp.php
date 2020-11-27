@@ -1,5 +1,7 @@
 <?php
-$idpos = $_GET["idpos"]; 
+$idpos = $_GET["idpos"];
+$user = $_GET["user"]; 
+$pass = $_GET["pass"];  
 $filename = "ntp.xml";
 $handle = fopen($filename, "r");
 $XPost = fread($handle, filesize($filename));
@@ -8,7 +10,7 @@ $url = 'http://'.$idpos.'/ISAPI/System/time/ntpServers/';
 
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
-curl_setopt($ch, CURLOPT_USERPWD, "admin:admin1234");
+curl_setopt($ch, CURLOPT_USERPWD, "$user:$pass");
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
 curl_setopt($ch, CURLOPT_POSTFIELDS, $XPost);
@@ -46,7 +48,7 @@ $url7 = 'http://'.$idpos.'/ISAPI/System/time/';
 
 $ch7 = curl_init();
 curl_setopt($ch7, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
-curl_setopt($ch7, CURLOPT_USERPWD, "admin:admin1234");
+curl_setopt($ch7, CURLOPT_USERPWD, "$user:$pass");
 curl_setopt($ch7, CURLOPT_URL, $url7);
 curl_setopt($ch7, CURLOPT_CUSTOMREQUEST, "PUT");
 curl_setopt($ch7, CURLOPT_POSTFIELDS, $XPost1);
@@ -84,7 +86,7 @@ $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_URL, 'http://'.$idpos.'/ISAPI/System/time/');
 curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
-curl_setopt($ch, CURLOPT_USERPWD, "admin:admin1234");
+curl_setopt($ch, CURLOPT_USERPWD, "$user:$pass");
 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: text/xml"]); 
@@ -108,7 +110,7 @@ $cp = curl_init();
 
 curl_setopt($cp, CURLOPT_URL, 'http://'.$idpos.'/ISAPI/ContentMgmt/Storage/hdd/');
 curl_setopt($cp, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
-curl_setopt($cp, CURLOPT_USERPWD, "admin:admin1234");
+curl_setopt($cp, CURLOPT_USERPWD, "$user:$pass");
 
 curl_setopt($cp, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($cp, CURLOPT_HTTPHEADER, ["Content-Type: text/xml"]); 
@@ -134,7 +136,7 @@ $ch2 = curl_init();
 
 curl_setopt($ch2, CURLOPT_URL, 'http://'.$idpos.'/ISAPI/System/Network/interfaces/');
 curl_setopt($ch2, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
-curl_setopt($ch2, CURLOPT_USERPWD, "admin:admin1234");
+curl_setopt($ch2, CURLOPT_USERPWD, "$user:$pass");
 
 
 curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);

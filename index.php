@@ -6,7 +6,7 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
 
-input[type=text], input[type=password] {
+input[type=text],[type=number], input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -76,6 +76,9 @@ span.psw {
   <div class="container">
     <label for="uname"><center><b>Za postavljanje ntp-a unesi adresu snimača</b></center></label>
     <input type="text" placeholder="NPR. 192.168.0.64" name="idpos" required>
+<input type="text" id="user" name="user" value="admin">
+<input type="password" id="pass" name="pass" value="admin1234" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();">
+
 
     <button type="submit">POSTAVI</button>
 <button type="submit"onclick="goBack()">NATRAG</button>
@@ -84,7 +87,16 @@ function goBack() {
   window.history.back();
 }
 </script>
-  </div>
+<script>
+function mouseoverPass(obj) {
+  var obj = document.getElementById('pass');
+  obj.type = "text";
+}
+function mouseoutPass(obj) {
+  var obj = document.getElementById('pass');
+  obj.type = "password";
+}
+</script>
 
 </form>
 

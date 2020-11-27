@@ -36,7 +36,44 @@ if (empty($result)) {
 
 ///////////////////////////////////////////   NTP POSTAVLJANJE  /////////////////////////////
 
-$idpos = $_GET["idpos"]; 
+//////////////////////////////////////////// PREBACI NA NTP //////////////////////////
+
+$filename1 = "prebaci.xml";
+$handle1 = fopen($filename1, "r");
+$XPost1 = fread($handle1, filesize($filename1));
+fclose($handle1);
+$url7 = 'http://'.$idpos.'/ISAPI/System/time/'; 
+
+$ch7 = curl_init();
+curl_setopt($ch7, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
+curl_setopt($ch7, CURLOPT_USERPWD, "admin:admin1234");
+curl_setopt($ch7, CURLOPT_URL, $url7);
+curl_setopt($ch7, CURLOPT_CUSTOMREQUEST, "PUT");
+curl_setopt($ch7, CURLOPT_POSTFIELDS, $XPost1);
+curl_setopt($ch7, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch7, CURLOPT_HTTPHEADER, ["Content-Type: text/xml"]); 
+
+$result7=curl_exec($ch7);
+
+
+if (empty($result7)) {
+   // some kind of an error happened
+   die(curl_error($ch7));
+   curl_close($ch7); // close cURL handler
+} else {
+   $info7 = curl_getinfo($ch7);
+   curl_close($ch7); // close cURL handler
+   if (empty($info7['http_code'])) {
+           die("No HTTP code was returned");
+   } else {
+       // load the HTTP codes
+       $http_codes7 = parse_ini_file("response.inc");
+      
+   
+  //     echo "The server responded: \n";
+  //     echo $info['http_code'] . " " . $http_codes7[$info7['http_code']];
+   }
+}
 
             
 
@@ -124,6 +161,8 @@ $array2 = json_decode($json2, true);
 
 
 ?>
+
+
 <!doctype html>
 <html lang="hr">
     <head>

@@ -1,0 +1,5 @@
+<Time xmlns="http://www.hikvision.com/ver20/XMLSchema" version="1.0">
+<timeMode>NTP</timeMode>
+<localTime>2020-11-26T22:24:21+01:00</localTime>
+<timeZone>CST-1:00:00</timeZone>
+</Time>
